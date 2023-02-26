@@ -15,6 +15,9 @@
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
+                                <a href="{{ route('type.create') }}" class="btn btn-default">カテゴリ登録</a>
+                            </div>
+                            <div class="input-group-append">
                                 <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
                             </div>
                         </div>
@@ -38,7 +41,13 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->type }}</td>
+                                    <td>
+                                        @if (!empty($item->type()->name))
+                                        {{ $item->type()->name }}
+                                    @else
+                                        未定
+                                    @endif
+                                    </td>
                                     <td>{{ $item->detail }}</td>
                                     <td><a href="{{route('item.show',$item->id)}}" class="btn btn-outline-primary">情報</a></td>
                                     <td><a href="{{route('item.edit',$item->id)}}" class="btn btn-outline-success">編集</a></td>

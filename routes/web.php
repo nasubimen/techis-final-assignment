@@ -33,3 +33,9 @@ Route::prefix('items')->group(function () {
     Route::put('/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
     Route::delete('/{id}', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.destroy');
 });
+
+Route::prefix('type')->group(function () {
+    Route::get('create', [App\Http\Controllers\TypeController::class, 'create'])->name('type.create');
+    Route::post('store', [App\Http\Controllers\TypeController::class, 'store'])->name('type.store');
+
+});
