@@ -19,7 +19,7 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->randomElement($goods),
             'status' => "active",
-            'type' => $this->faker->numberBetween(0, 2),
+            'type' => $this->faker->numberBetween(0, 3),
             'detail' => $this->faker->realText(50),
         ];
     }
