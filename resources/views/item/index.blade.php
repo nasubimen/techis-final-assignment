@@ -7,6 +7,24 @@
 @stop
 
 @section('content')
+<div class="pull-right d-flex flex-row-reverse">
+    <a href="{{route('item.index')}}" class="reload">
+        <i class="fas fa-sync-alt fa-2x"></i>
+    </a>
+</div>
+<form action="{{route('item.index')}}" method="get" class="input-group mb-4">
+    {{-- リロードした際に全一覧画面に戻るようにしたい --}}
+    <input type="text" class="form-control" name="search" placeholder="名前検索" value="{{request()->search}}" >
+    <input type="text" name="search2" class="form-control" placeholder="詳細検索" value="{{request()->search2}}" >
+    <select name="search3" class="form-select" id='type'>
+        <option value="">選択してください</option>
+        @foreach ($types as $type)
+        <option value="{{$type->id}}" {{request()->search3 == "$type->id" ? "selected" : "";}}>{{$type->name}}</option>
+        @endforeach
+    </select>
+    <button type="submit" class="btn btn-outline-success">検索</button>
+</form>
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -73,6 +91,9 @@
 <style>
     .pagination{
         justify-content: center;
+    }
+    .reload{
+        padding: 10px;
     }
 </style>
 @stop

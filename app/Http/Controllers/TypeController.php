@@ -25,7 +25,7 @@ class TypeController extends Controller
         return view('type.create');
     }
     /**
-     * 商品登録
+     * カテゴリー登録
      */
     public function store(Request $request)
     {
@@ -38,4 +38,6 @@ class TypeController extends Controller
         $type->save();
         return redirect('/items');
     }
+
+    
 }
