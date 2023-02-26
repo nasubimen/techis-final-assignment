@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '商品一覧')
+@section('title', '更新一覧')
 
 @section('content_header')
-    <h1>商品一覧</h1>
+    <h1>更新一覧</h1>
 @stop
 
 @section('content')
@@ -40,8 +40,8 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
-                                    <td><a href="{{route('item.show',$item->id)}}" class="btn btn-outline-primary">情報</a></td>
-                                    <td><a href="{{route('item.edit',$item->id)}}" class="btn btn-outline-success">編集</a></td>
+                                    <td><a href="{{route('item.show',$item->id)}}">情報</a></td>
+                                    <td><a href="{{route('item.edit',$item->id)}}">編集</a></td>
                                     <td><form action="{{route('item.destroy',$item->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -51,9 +51,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div>
-                        {{ $items->links() }}
-                    </div>
                 </div>
             </div>
         </div>
@@ -61,11 +58,6 @@
 @stop
 
 @section('css')
-<style>
-    .pagination{
-        justify-content: center;
-    }
-</style>
 @stop
 
 @section('js')

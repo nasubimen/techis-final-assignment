@@ -27,7 +27,7 @@ class ItemController extends Controller
         $items = Item
             ::where('items.status', 'active')
             ->select()
-            ->get();
+            ->paginate(15);
 
         return view('item.index', compact('items'));
     }
