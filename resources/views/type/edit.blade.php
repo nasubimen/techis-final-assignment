@@ -3,7 +3,7 @@
 @section('title', '商品登録')
 
 @section('content_header')
-    <h1>カテゴリー登録</h1>
+    <h1>カテゴリー編輯</h1>
 @stop
 
 @section('content')
@@ -20,17 +20,18 @@
             @endif
 
             <div class="card card-primary">
-                <form method="POST" action="{{route('type.store')}}">
+                <form method="POST" action="{{route('type.update',$type->id)}}">
+                    @method('put')
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">カテゴリ名</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="名前">
+                            <input type="text" class="form-control" id="name" name="name" value="{{$type->name}}">
                         </div>
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">登録</button>
+                        <button type="submit" class="btn btn-primary">編集</button>
                     </div>
                 </form>
             </div>
