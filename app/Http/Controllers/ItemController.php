@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Type;
+use App\Models\Log;
 
 class ItemController extends Controller
 {
@@ -73,7 +74,14 @@ class ItemController extends Controller
                 'detail' => $request->detail,
             ]);
 
-
+            //履歴登録（登録=1）
+            Log::create([
+                'user_id' => Auth::user()->id,
+                'name' => $request->name,
+                'type' => $request->type,
+                'log_id' => 1,
+                'detail' => $request->detail,
+            ]);
             return redirect('/items');
         }
 
@@ -100,15 +108,15 @@ class ItemController extends Controller
     {
         // 商品一覧取得
         $item = Item::all()->find($id);
-        
+
         $types = Type::all();
 
-        return view('item.edit', compact('item','types'));
+        return view('item.edit', compact('item', 'types'));
     }
     /**
      * 商品情報
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         // 商品一覧取得
         $item = Item::all()->find($id);
@@ -119,11 +127,29 @@ class ItemController extends Controller
         $item->detail = $request->input('detail');
         $item->save();
 
+        //履歴登録（編集=2）
+        Log::create([
+            'user_id' => Auth::user()->id,
+            'name' => $request->name,
+            'type' => $request->type,
+            'log_id' => 2,
+            'detail' => $request->detail,
+        ]);
+
         return redirect()->route('item.index');
     }
 
     public function destroy($id)
     {
+        $item = Item::all()->find($id);
+        //履歴登録（削除=3）
+        Log::create([
+            'user_id' => Auth::user()->id,
+            'name' => $item->name,
+            'type' => $item->type,
+            'log_id' => 3,
+            'detail' => $item->detail,
+        ]);
         Item::destroy($id);
         return redirect()->route('item.index');
     }
