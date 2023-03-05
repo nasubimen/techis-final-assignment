@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', '商品一覧')
+@section('title', '履歴一覧')
 
 @section('content_header')
     <h1>履歴一覧</h1>
