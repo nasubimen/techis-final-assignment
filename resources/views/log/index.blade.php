@@ -7,6 +7,11 @@
 @stop
 
 @section('content')
+<div class="pull-right d-flex flex-row-reverse">
+    <a href="{{route('log.index')}}" class="reload">
+        <i class="fas fa-sync-alt fa-2x"></i>
+    </a>
+</div>
 <form action="{{route('log.index')}}" method="get" class="input-group mb-4">
     {{-- リロードした際に全一覧画面に戻るようにしたい --}}
     <input type="text" class="form-control" name="search" placeholder="ユーザー検索" value="{{request()->search}}" >
