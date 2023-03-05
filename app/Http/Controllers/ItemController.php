@@ -118,6 +118,11 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
         // 商品一覧取得
         $item = Item::all()->find($id);
         // dd($item);
