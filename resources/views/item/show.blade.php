@@ -50,6 +50,7 @@
                 </ul>
                   <td><a class="btn btn-dark" href="{{route('item.index')}}">戻る</a></td>
               </div>
+    </div>
 
 @stop
 
