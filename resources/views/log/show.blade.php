@@ -59,6 +59,9 @@
 .row{
     justify-content: center;
 }
+.table-responsive{
+    margin-bottom: 20px;
+}
 </style>
 
 @stop
