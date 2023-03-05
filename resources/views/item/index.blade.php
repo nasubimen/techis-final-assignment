@@ -66,7 +66,7 @@
                                         未定
                                     @endif
                                     </td>
-                                    <td>{{ $item->detail }}</td>
+                                    <td>{{ Str::limit($item->detail, 15, '...')  }}</td>
                                     <td><a href="{{route('item.show',$item->id)}}" class="btn btn-outline-primary">詳細</a></td>
                                     <td><a href="{{route('item.edit',$item->id)}}" class="btn btn-outline-success">編集</a></td>
                                     <td><form action="{{route('item.destroy',$item->id)}}" method="POST">
