@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateTypesTable extends Migration
+class CreateLogTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,20 +14,24 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('log_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
         });
 
-        DB::table('types')->insert([[
+        //ここから記述
+        DB::table('log_types')->insert([[
             'id' => 1,
-            'name' => 'メンズ',
+            'name' => '登録',
         ], [
             'id' => 2,
-            'name' => 'レディース',
+            'name' => '編集',
+        ], [
+            'id' => 3,
+            'name' => '削除'
         ]
-        ]);
+    ]);
     }
 
     /**
@@ -37,6 +41,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('log_types');
     }
 }

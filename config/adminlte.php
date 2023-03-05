@@ -232,7 +232,7 @@ return [
         ],
         [
             'text' => '更新履歴',
-            'url'  => 'items/log',
+            'url'  => 'logs',
             'icon' => 'fas fa-history',
         ],
 

@@ -33,12 +33,17 @@ Route::prefix('items')->group(function () {
     Route::delete('/{id}', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.destroy');
 });
 
-Route::prefix('type')->group(function () {
+Route::prefix('types')->group(function () {
     Route::get('/', [App\Http\Controllers\TypeController::class, 'index'])->name('type.index');
     Route::get('create', [App\Http\Controllers\TypeController::class, 'create'])->name('type.create');
     Route::get('/{id}/edit', [App\Http\Controllers\TypeController::class, 'edit'])->name('type.edit');
     Route::post('store', [App\Http\Controllers\TypeController::class, 'store'])->name('type.store');
     Route::put('/{id}', [App\Http\Controllers\TypeController::class, 'update'])->name('type.update');
     Route::delete('/{id}', [App\Http\Controllers\TypeController::class, 'destroy'])->name('type.destroy');
+
+});
+Route::prefix('logs')->group(function () {
+    Route::get('/', [App\Http\Controllers\LogController::class, 'index'])->name('log.index');
+    Route::get('/{id}', [App\Http\Controllers\LogController::class, 'show'])->name('log.show');
 
 });
