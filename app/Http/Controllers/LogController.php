@@ -29,7 +29,7 @@ class LogController extends Controller
             $search_split2 = preg_split('/[\s]+/', $search_split);
             $user->where(function ($user) use ($search_split2) {
                 foreach ($search_split2 as $value) {
-                    $user->orWhere('name', 'LIKE', "%{$value}%");
+                    $user->Where('name', 'LIKE', "%{$value}%");
                 }
             });
             // ※補足
@@ -39,9 +39,8 @@ class LogController extends Controller
             // 具体的には、use ($search_split2)を使うことで、$search_split2変数を内側の無名関数で使用できます。これによって、
             // $search_split2の値をループで回しながら、内側の無名関数でwhere条件を追加することができます。
             $users = $user->get();
-            foreach ($users as $value) {
-                $query->orWhere('user_id', $value->id);
-            }
+            $userIds = $users->pluck('id')->toArray();
+            $query->whereIn('user_id', $userIds);
         }
         if (!empty($request->input('search1'))) {
             $search_split = mb_convert_kana($request->input('search1'), 's');
