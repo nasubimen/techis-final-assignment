@@ -1,35 +1,34 @@
-## 商品管理システム
+# 商品在庫管理システム
 
-### 環境構築手順
+## 概要
 
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLかPostgreSQLのデータベース作成（名前：item_management）  
-  ローカルでMAMPを使用しているのであれば、MySQL推奨
-* .env にデータベース接続情報追加
+このシステムは商品の在庫を管理することができます。
+商品の登録、編集、削除を行うことができ、各商品の在庫を調整することが可能です。
+
+## 主な機能
+
+-   ログイン・ログアウト機能
+-   商品一覧画面
+-   商品新規登録・編集・削除機能
+-   商品検索機能
+-   カテゴリー別管理
+-   在庫管理履歴機能
+-   ログイン・ログアウト機能
+
+## 開発環境
+
+PHP 8.1.12
+MySQL 5.7.34
+Laravel 8.83.3
+
+## 設計書
+[設計書ページへ](https://drive.google.com/drive/folders/1z9_LsVe0mzOAcD4PUjTVYaR3vzQyXsW7?usp=share_link)
+
+## システム閲覧
+[アプリケーションページへ](https://techis-last-assignment.herokuapp.com/)
+
+### テストアカウント情報
 ```
-例）
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=item_management
-DB_USERNAME=root
-DB_PASSWORD=root
-```
-* APP_KEY生成
-```
-$ php artisan key:generate
-```
-* Composerインストール
-```
-$ composer install
-```
-* フロント環境構築
-```
-$ npm install
-$ npm run dev
-```
-* マイグレーション
-```
-$ php artisan migrate
+メールアドレス : tarou@tarou.com
+パスワード : password
 ```
