@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\App; // 追加
+use Illuminate\Support\Facades\URL; // 追加
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,8 +30,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Paginator::useBootstrap();
-        if (env('APP_ENV') === 'production') {
-            $url->forceScheme('https');
+        // if (env('APP_ENV') === 'production') {
+        //     $url->forceScheme('https');
+        // }
+        if (App::environment('production')) {
+            URL::forceScheme('https');
         }
     }
 }
