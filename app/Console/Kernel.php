@@ -29,4 +29,15 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    protected $middlewareGroups = [
+        'web' => [
+            // 既存のミドルウェア
+            \Fruitcake\Cors\HandleCors::class,
+        ],
+        'api' => [
+            // 既存のミドルウェア
+            \Fruitcake\Cors\HandleCors::class,
+        ],
+    ];
 }
