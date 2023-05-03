@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Type;
 use App\Models\Log;
+use Illuminate\Pagination\Paginator;
 
 class ItemController extends Controller
 {
