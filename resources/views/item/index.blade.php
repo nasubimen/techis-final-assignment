@@ -80,7 +80,7 @@
                     </table>
                     <div>
                         {{-- {{ $items->links() }} --}}
-                        {{ $items->appends(request()->except('page'))->links() }}
+                        {{ $items->appends(['sort' => 'created_at'])->links() }}
 
                     </div>
                 </div>
