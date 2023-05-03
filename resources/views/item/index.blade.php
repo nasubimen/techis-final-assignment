@@ -80,7 +80,8 @@
                     </table>
                     <div>
                         {{-- {{ $items->links() }} --}}
-                        {{ $items->appends(request()->query())->links() }}
+                        {{ $items->appends(request()->except('page'))->links() }}
+
                     </div>
                 </div>
             </div>
